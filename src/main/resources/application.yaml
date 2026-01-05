@@ -1,0 +1,28 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: wallet-backend
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/walletDb
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+    show-sql: true
+  security:
+    user:
+      name: user
+      password: user
+
+jwt:
+  secret: bXlTdXBlclNlY3JldEtleTEyMzQ1Njc4OQ==
+  expiration: 86400000   # 1 day in milliseconds
+
+
+
