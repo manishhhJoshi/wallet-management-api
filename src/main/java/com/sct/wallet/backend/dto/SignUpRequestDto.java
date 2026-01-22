@@ -1,17 +1,12 @@
 package com.sct.wallet.backend.dto;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class LoginRequestDto {
-
-    @NotBlank
+public class SignUpRequestDto {
     private String username;
-
-    @NotBlank
+    private String email;
     private String password;
-
 }

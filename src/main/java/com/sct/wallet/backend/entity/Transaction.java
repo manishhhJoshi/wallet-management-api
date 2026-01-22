@@ -1,12 +1,13 @@
 package com.sct.wallet.backend.entity;
 
+import com.sct.wallet.backend.entity.base.BaseAudit;
 import com.sct.wallet.backend.entity.enums.TransactionType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.resource.transaction.spi.TransactionStatus;
+import com.sct.wallet.backend.entity.enums.TransactionStatus;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -17,7 +18,7 @@ import java.util.UUID;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Transaction {
+public class Transaction extends BaseAudit {
 
     @Id
     @GeneratedValue
