@@ -1,23 +1,24 @@
 package com.sct.wallet.backend.controller;
 
-import com.sct.wallet.backend.service.TransactionServiceImpl;
+import com.sct.wallet.backend.dto.TransactionRequestDto;
+import com.sct.wallet.backend.dto.TransactionResponseDto;
+import com.sct.wallet.backend.entity.Transaction;
+import com.sct.wallet.backend.service.TransactionService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequiredArgsConstructor
 @RequestMapping("/api/transactions")
+@RequiredArgsConstructor
 public class TransactionController {
-    private final TransactionServiceImpl service;
 
-    @PostMapping
-    public String transaction(){
-        return "This is transaction endpoint";
+    private final TransactionService transactionService;
+
+    @PostMapping("/transfer")
+    public ResponseEntity<TransactionResponseDto> transferMoney(
+            @RequestBody TransactionRequestDto request) {
+
+        return ResponseEntity.ok(transactionService.transfer(request));
     }
-
-
-
-
 }

@@ -22,21 +22,26 @@ public class Transaction extends BaseAudit {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private UUID id; // Primary key, unique identifier for the transaction
 
     @ManyToOne
-    @JoinColumn(name = "wallet_id", nullable = false)
-    private Wallet wallet;
+    @JoinColumn(name = "from_wallet_id", nullable = false)
+    private Wallet fromWallet; // The wallet that is sending money (debited)
+
+    @ManyToOne
+    @JoinColumn(name = "to_wallet_id", nullable = false)
+    private Wallet toWallet; // The wallet that is receiving money (credited)
 
     @Enumerated(EnumType.STRING)
-    private TransactionType type;
+    private TransactionType type; // Transaction type: DEBIT, CREDIT, TRANSFER, etc.
 
     @Column(nullable = false, precision = 19, scale = 2)
-    private BigDecimal amount;
+    private BigDecimal amount; // Amount transferred
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private TransactionStatus status;
 
     @Column(unique = true, nullable = false)
-    private String reference;
+    private String reference; // Unique reference for tracking
 }
