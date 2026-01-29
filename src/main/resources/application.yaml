@@ -24,5 +24,6 @@ jwt:
  secret: bXlTdXBlclNlY3JldEtleTEyMzQ1Njc4OQ==
  expiration: 86400000   # 1 day in milliseconds
 
-
+#user1
+#password123
 

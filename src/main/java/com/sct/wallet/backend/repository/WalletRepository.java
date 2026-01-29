@@ -6,10 +6,12 @@ import com.sct.wallet.backend.entity.Wallet;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
 @Repository
 public interface WalletRepository extends JpaRepository<Wallet, UUID> {
     Optional<Wallet> findByUser(User user);
+    List<Wallet> findByUser_Id(UUID userId);
 }

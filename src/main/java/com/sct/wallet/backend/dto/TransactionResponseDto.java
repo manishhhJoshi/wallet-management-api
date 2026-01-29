@@ -10,11 +10,16 @@ import java.util.UUID;
 @Data
 @Builder
 public class TransactionResponseDto {
-    private UUID transactionId;
-    private UUID fromWalletId;
-    private UUID toWalletId;
+
+    private String reference;
     private BigDecimal amount;
     private String status;
-    private String reference;
-    private LocalDateTime createdAt;
+
+    private UUID debitTransactionId;
+    private UUID debitWalletId;
+    private LocalDateTime debitCreatedAt;
+
+    private UUID creditTransactionId;
+    private UUID creditWalletId;
+    private LocalDateTime creditCreatedAt;
 }
