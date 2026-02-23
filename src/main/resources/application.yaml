@@ -22,7 +22,7 @@ spring:
 
 jwt:
  secret: bXlTdXBlclNlY3JldEtleTEyMzQ1Njc4OQ==
- expiration: 86400000   # 1 day in milliseconds
+ expiration: 11000000   # 3.05 hrs in milliseconds
 
 #user1
 #password123

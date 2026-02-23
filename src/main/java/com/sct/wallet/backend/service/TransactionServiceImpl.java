@@ -46,6 +46,16 @@ public class TransactionServiceImpl implements TransactionService {
         Wallet fromWallet = walletRepository.findById(request.getFromWalletId())
                 .orElseThrow(() -> new RuntimeException("From wallet not found"));
 
+        String username = SecurityContextHolder.getContext()
+                .getAuthentication().getName();
+
+        User loggedInUser = userRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+        if (!fromWallet.getUser().getId().equals(loggedInUser.getId())) {
+            throw new RuntimeException("Unauthorized access to wallet");
+        }
+
         Wallet toWallet = walletRepository.findById(request.getToWalletId())
                 .orElseThrow(() -> new RuntimeException("To wallet not found"));
 
@@ -156,7 +166,7 @@ public class TransactionServiceImpl implements TransactionService {
         return new PageImpl<>(pageContent, pageable, response.size());
     }
 
-    // ---------------- Private Helper ----------------
+    // Private Helper
     private TransactionResponseDto buildTransactionResponse(List<Transaction> transactions) {
         TransactionResponseDto.TransactionResponseDtoBuilder builder = TransactionResponseDto.builder();
 

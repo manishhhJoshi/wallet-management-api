@@ -1,7 +1,5 @@
 package com.sct.wallet.backend.config;
 
-import com.sct.wallet.backend.config.JwtProperties;
-import com.sct.wallet.backend.config.CustomUserDetails;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
